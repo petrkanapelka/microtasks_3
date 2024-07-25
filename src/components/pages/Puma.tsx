@@ -2,6 +2,7 @@ import React from 'react';
 import pumaModel1 from '../../assets/puma/puma1.jpg'
 import pumaModel2 from '../../assets/puma/puma2.jpg'
 import pumaModel3 from '../../assets/puma/puma3.jpg'
+import { Link } from 'react-router-dom';
 
 export type PumaItem = {
     id: string;
@@ -38,8 +39,23 @@ export const pumaArr: PumaItem[] = [
 
 export const PageTwo = () => {
     return (
-        <div>
+        <div
+            style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}
+        >
             <h2>Puma Sneakers</h2>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                {pumaArr.map((sneaker, i) => {
+                    return (
+                        <Link key={i} to={`/puma/${sneaker.id}`}>
+                            <img
+                                style={{ width: '200px', height: 'auto' }}
+                                src={sneaker.picture}
+                                alt={sneaker.model}
+                            />
+                        </Link>
+                    )
+                })}
+            </div>
             <p>
                 Step into the world of Puma, where cutting-edge design meets unmatched comfort. Puma sneakers are crafted to provide superior support and durability, making them perfect for everyday wear and athletic activities. Explore our collection and find the perfect pair to elevate your footwear game.
             </p>
