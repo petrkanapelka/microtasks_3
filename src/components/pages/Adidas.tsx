@@ -12,6 +12,7 @@ export type AdidasItem = {
     price: string;
     picture: string;
 }
+
 export const adidasArr: AdidasItem[] = [
     {
         id: "1",
