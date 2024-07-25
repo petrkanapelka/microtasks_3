@@ -1,3 +1,4 @@
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { PageOne } from "./components/pages/Adidas";
 import { PageThree } from "./components/pages/Nike";
@@ -7,6 +8,9 @@ import { Error404 } from "./components/pages/Error404";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Model } from "./components/Model";
+import { adidasArr } from "./components/pages/Adidas";
+import { pumaArr } from "./components/pages/Puma";
+import { nikeArr } from "./components/pages/Nike";
 
 const PATH = {
     MAIN: '/',
@@ -15,6 +19,8 @@ const PATH = {
     PATH3: '/nike',
     ERROR: '/error404',
 } as const
+
+
 
 function App() {
     return (
@@ -35,14 +41,13 @@ function App() {
                 <div className={styles.content}>
                     <Routes>
                         <Route path={PATH.MAIN} element={<Navigate to={PATH.PATH1} />} />
-
                         <Route path={PATH.PATH1} element={<PageOne />} />
                         <Route path={PATH.PATH2} element={<PageTwo />} />
                         <Route path={PATH.PATH3} element={<PageThree />} />
                         <Route path={PATH.ERROR} element={<Error404 />} />
-
-                        <Route path='/adidas/:id' element={<Model />} />
-
+                        <Route path='/adidas/:id' element={<Model items={adidasArr} />} />
+                        <Route path='/nike/:id' element={<Model items={nikeArr} />} />
+                        <Route path='/puma/:id' element={<Model items={pumaArr} />} />
                         <Route path="/*" element={<Navigate to={PATH.ERROR} />} />
                     </Routes>
                 </div>
@@ -51,6 +56,8 @@ function App() {
         </div>
     );
 }
+
+
 
 const NavWrapper = styled.div`
     margin-left: 10px;
