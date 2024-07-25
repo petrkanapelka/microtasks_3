@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
+import { adidasArr } from './pages/Adidas';
+import { pumaArr } from './pages/Puma';
+import { nikeArr } from './pages/Nike';
 
 export type Item = {
     id: string;
@@ -13,9 +16,20 @@ type ModelProps = {
     items: Item[];
 }
 
-export const Model: React.FC<ModelProps> = ({ items }) => {
-    let params = useParams();
-    let item = items.find((el) => el.id === params.id);
+type ProductionType = {
+    [key: string]: Array<Item>
+}
+
+const production: ProductionType = {
+    'adidas': adidasArr,
+    'puma': pumaArr,
+    'nike': nikeArr,
+}
+
+export const Model: React.FC<ModelProps> = () => {
+    let { model, id } = useParams();
+    console.log("🚀 ~ params ➔", model, id);
+    let item = model ? production[model].find((el) => el.id === id) : null;
 
     return (
         item
