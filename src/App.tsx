@@ -45,9 +45,9 @@ function App() {
                         <Route path={PATH.PATH2} element={<PageTwo />} />
                         <Route path={PATH.PATH3} element={<PageThree />} />
                         <Route path={PATH.ERROR} element={<Error404 />} />
-                        <Route path='/adidas/:id' element={<Model items={adidasArr} />} />
-                        <Route path='/nike/:id' element={<Model items={nikeArr} />} />
-                        <Route path='/puma/:id' element={<Model items={pumaArr} />} />
+
+                        <Route path='/:model/:id' element={<Model items={adidasArr} />} />
+
                         <Route path="/*" element={<Navigate to={PATH.ERROR} />} />
                     </Routes>
                 </div>
