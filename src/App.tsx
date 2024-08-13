@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { PageOne } from "./components/pages/Adidas";
 import { PageThree } from "./components/pages/Nike";
@@ -9,8 +8,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Model } from "./components/Model";
 import { adidasArr } from "./components/pages/Adidas";
-import { pumaArr } from "./components/pages/Puma";
-import { nikeArr } from "./components/pages/Nike";
+import { Prices } from "./components/pages/Prices";
 
 const PATH = {
     MAIN: '/',
@@ -18,6 +16,7 @@ const PATH = {
     PATH2: '/puma',
     PATH3: '/nike',
     ERROR: '/error404',
+    PRICES: '/prices',
 } as const
 
 
@@ -37,6 +36,9 @@ function App() {
                     <NavWrapper>
                         <NavLink to={PATH.PATH3}>NIKE</NavLink>
                     </NavWrapper>
+                    <NavWrapper>
+                        <NavLink to={PATH.PRICES}>PRICES</NavLink>
+                    </NavWrapper>
                 </div>
                 <div className={styles.content}>
                     <Routes>
@@ -45,6 +47,7 @@ function App() {
                         <Route path={PATH.PATH2} element={<PageTwo />} />
                         <Route path={PATH.PATH3} element={<PageThree />} />
                         <Route path={PATH.ERROR} element={<Error404 />} />
+                        <Route path={PATH.PRICES} element={<Prices />} />
 
                         <Route path='/:model/:id' element={<Model items={adidasArr} />} />
 
