@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from './Prices.module.css';
 
 type Props = {};
 export const Prices = (props: Props) => {
-    const sneakers = [
+    let [searchParams, setSearchParams] = useSearchParams();
+
+    const sneakers = useMemo(()=>[
         {
             manufacturer: "Adidas",
             name: "Adidas Yeezy Boost 350",
@@ -35,17 +37,27 @@ export const Prices = (props: Props) => {
             price: 60,
             onSale: true
         }
-    ];
+    ],[]);
 
     const [filteredSneakers, setFilteredSneakers] = useState(sneakers);
 
     function handleOnSale() {
-
+        setSearchParams({ 'onSale': "true" })
     }
 
     function handleReset() {
-
+        setSearchParams({})
     }
+
+    useEffect(() => {
+        if (searchParams.get('onSale') === 'true') {
+            setFilteredSneakers([...filteredSneakers.filter((sneaker) => sneaker.onSale)])
+        } else {
+            setFilteredSneakers(sneakers)
+        }
+
+    }, [filteredSneakers, searchParams, sneakers])
+
 
 
     return (
@@ -55,22 +67,22 @@ export const Prices = (props: Props) => {
 
             <table className={styles.tableStyle}>
                 <thead>
-                <tr>
-                    <th className={styles.thStyle}>Manufacturer</th>
-                    <th className={styles.thStyle}>Name</th>
-                    <th className={styles.thStyle}>Price</th>
-                    <th className={styles.thStyle}>On Sale</th>
-                </tr>
+                    <tr>
+                        <th className={styles.thStyle}>Manufacturer</th>
+                        <th className={styles.thStyle}>Name</th>
+                        <th className={styles.thStyle}>Price</th>
+                        <th className={styles.thStyle}>On Sale</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {filteredSneakers.map((sneaker, index) => (
-                    <tr key={index}>
-                        <td className={styles.tdStyle}>{sneaker.manufacturer}</td>
-                        <td className={styles.tdStyle}>{sneaker.name}</td>
-                        <td className={styles.tdStyle}>${sneaker.price}</td>
-                        <td className={styles.tdStyle}>{sneaker.onSale ? 'Yes' : 'No'}</td>
-                    </tr>
-                ))}
+                    {filteredSneakers.map((sneaker, index) => (
+                        <tr key={index}>
+                            <td className={styles.tdStyle}>{sneaker.manufacturer}</td>
+                            <td className={styles.tdStyle}>{sneaker.name}</td>
+                            <td className={styles.tdStyle}>${sneaker.price}</td>
+                            <td className={styles.tdStyle}>{sneaker.onSale ? 'Yes' : 'No'}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
