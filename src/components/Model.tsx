@@ -28,7 +28,6 @@ const production: ProductionType = {
 
 export const Model: React.FC<ModelProps> = () => {
     let { model, id } = useParams();
-    console.log("🚀 ~ params ➔", model, id);
     let item = model ? production[model].find((el) => el.id === id) : null;
 
     return (
