@@ -37,7 +37,7 @@ export const pumaArr: PumaItem[] = [
 ]
 
 
-export const PageTwo = () => {
+export const Puma = () => {
     return (
         <div
             style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}
