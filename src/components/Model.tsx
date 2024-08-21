@@ -12,10 +12,6 @@ export type Item = {
     picture: string;
 }
 
-type ModelProps = {
-    items: Item[];
-}
-
 type ProductionType = {
     [key: string]: Array<Item>
 }
@@ -26,7 +22,7 @@ const production: ProductionType = {
     'nike': nikeArr,
 }
 
-export const Model: React.FC<ModelProps> = () => {
+export const Model: React.FC = () => {
     let { model, id } = useParams();
     let item = model ? production[model].find((el) => el.id === id) : null;
 
