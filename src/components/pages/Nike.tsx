@@ -37,7 +37,7 @@ export const nikeArr: NikeItem[] = [
 ]
 
 
-export const PageThree = () => {
+export const Nike = () => {
     return (
         <div
             style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}
