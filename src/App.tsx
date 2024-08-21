@@ -25,18 +25,6 @@ function App() {
                 </div>
                 <div className={styles.content}>
                     <Outlet />
-                    {/* <Routes>
-                        <Route path={PATH.MAIN} element={<Navigate to={PATH.ADIDAS} />} />
-                        <Route path={PATH.ADIDAS} element={<Adidas />} />
-                        <Route path={PATH.PUMA} element={<PageTwo />} />
-                        <Route path={PATH.NIKE} element={<PageThree />} />
-                        <Route path={PATH.ERROR} element={<Error404 />} />
-                        <Route path={PATH.PRICES} element={<Prices />} />
-
-                        <Route path='/:model/:id' element={<Model items={adidasArr} />} />
-
-                        <Route path="/*" element={<Navigate to={PATH.ERROR} />} />
-                    </Routes> */}
                 </div>
             </div>
             <div className={styles.footer}>abibas 2023</div>
