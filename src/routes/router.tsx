@@ -1,10 +1,11 @@
 import { createBrowserRouter, } from "react-router-dom";
 import App from "../App";
 import { Error404 } from "../components/pages/Error404";
-import { Adidas } from "../components/pages/Adidas";
+import { Adidas, adidasArr } from "../components/pages/Adidas";
 import { Nike } from "../components/pages/Nike";
 import { Puma } from "../components/pages/Puma";
 import { Prices } from "../components/pages/Prices";
+import { Model } from "../components/Model";
 
 export const PATH = {
     MAIN: '/',
@@ -13,6 +14,7 @@ export const PATH = {
     NIKE: '/nike',
     ERROR: '/error404',
     PRICES: '/prices',
+    MODEL: ':model/:id'
 } as const
 
 export const router = createBrowserRouter([
@@ -24,7 +26,7 @@ export const router = createBrowserRouter([
             {
                 path: PATH.ADIDAS,
                 element: <Adidas />,
-                errorElement: <Error404 />
+                errorElement: <Error404 />,
             },
             {
                 path: PATH.PUMA,
@@ -41,6 +43,10 @@ export const router = createBrowserRouter([
                 element: <Prices />,
                 errorElement: <Error404 />
             },
+            {
+                path: PATH.MODEL,
+                element: <Model />
+            }
         ]
     },
 ]);
