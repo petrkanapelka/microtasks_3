@@ -22,6 +22,9 @@ function App() {
                     <NavWrapper>
                         <NavLink to={PATH.PRICES}>PRICES</NavLink>
                     </NavWrapper>
+                    <NavWrapper>
+                        <NavLink to={PATH.PROTECTED}>PROTECTED PAGE</NavLink>
+                    </NavWrapper>
                 </div>
                 <div className={styles.content}>
                     <Outlet />
