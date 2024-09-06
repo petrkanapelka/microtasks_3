@@ -75,6 +75,10 @@ export const router = createBrowserRouter([
         errorElement: <Navigate to={PATH.ERROR} />,
         children: [
             {
+                index: true,
+                element: <Navigate to={PATH.ADIDAS} />
+            },
+            {
                 element: <PrivateRoute isAuth={false} />,
                 children: privateRoutes
             },
@@ -82,3 +86,4 @@ export const router = createBrowserRouter([
         ]
     },
 ]);
+
